@@ -9,4 +9,4 @@ I am a QA Engineer in training with a background in data management and a passio
 * **OS/Devices:** Windows, Android (Google Pixel)
 
 ### 📁 Projects
-- [Manual Testing Case Study - Sports Streaming Platform](./Bug-Reports) (Coming soon)
+* [Sports Streaming UI/UX Case Study](./projects/sports-streaming/README.md) — Windows 10 & Android 16.
