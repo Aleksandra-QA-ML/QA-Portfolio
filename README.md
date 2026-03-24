@@ -9,4 +9,6 @@ I am a QA Engineer in training with a background in data management and a passio
 * **OS/Devices:** Windows, Android (Google Pixel)
 
 ### 📁 Projects
-* [Sports Streaming UI/UX Case Study](./projects/sports-streaming/README.md) — Windows 10 & Android 16.
+* **[Mobile Performance Deep Dive](./projects/mobile-performance-jank/README.md)** — Identifying UI "Jank" on Android 16 using GPU Profiling.
+* **[VOD Content Audit & Auth Logic](./projects/mobile-content-logic/README.md)** — Testing 250+ items and finding critical Access Bypass defects.
+* **[Cross-Platform UI Testing](./projects/sports-streaming/README.md)** — Windows 10 & Android 16 investigation using Chrome DevTools.
