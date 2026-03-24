@@ -31,3 +31,4 @@ While executing standard test cases, I identified subtle visual stutters during 
 
 ---
 *Created as part of the QA Portfolio — Aleksandra Savostyanova*
+![GPU Performance Evidence](./projects/mobile-performance-jank/Visible stuttering_3.1.png)
