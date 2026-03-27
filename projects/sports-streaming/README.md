@@ -3,6 +3,11 @@
 ## 🎯 Project Overview
 Functional and UI/UX testing of a sports streaming web-service across Desktop (Windows 10) and Mobile (Android 16) environments.
 
+## 🚀 Project Results & Success Rate
+* **Total Bug Reports:** 6 Submitted / 6 Approved (100% Acceptance Rate).
+* **Key Achievement:** Identified critical UI/UX bottlenecks including navigation latency and "sticky" button highlights that impacted the user experience during live events.
+* **Verification:** All findings were validated and accepted by the Project Manager, confirming high-value impact on the platform's stability.
+
 ## 💻 Environments & Tools
 * **Desktop:** Windows 10 | Chrome & Edge (Main investigation via **DevTools**).
 * **Mobile:** Google Pixel 7 | **Android 16 (Preview)**.
