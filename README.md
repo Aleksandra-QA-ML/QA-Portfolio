@@ -1,35 +1,38 @@
 # QA Portfolio | Aleksandra Savostianova 🎯
 
-This repository contains my professional QA artifacts, test documentation, and project reports. It showcases my transition from 10+ years of engineering and data management into Software Quality Assurance.
+This repository showcases my professional QA artifacts and methodologies. I combine 10+ years of technical data expertise with hands-on experience in manual testing for global digital platforms.
 
 ---
 
-## 📂 Repository Overview
+## 📂 Portfolio Structure & Projects
 
-In this repository, you will find documentation related to:
+### 🎥 [Domain: Streaming & Content Platforms](./Domain-Streaming-Content)
+*Testing experience for global entertainment services, focusing on UI/UX and cross-device stability.*
+* **Focus:** Functional testing of video playback, subscription models, and content delivery.
+* **Artifacts:** High-priority bug reports and regression suites.
 
-* **Manual Testing:** Structured test cases, checklists, and detailed bug reports.
-* **Real-World Projects:** Evidence of testing activities, including results from platforms like **uTest** (Approved reports ✅).
-* **System Analysis:** Deep dives into software logic, data integrity, and performance (e.g., Mobile Performance and System Verification).
+### ⚽ [Domain: Sports Media Giants](./Domain-Sports-Media)
+*QA activities for major sports media broadcasting and news platforms.*
+* **Focus:** Real-time data updates, localization, and mobile app performance under high load.
+* **Artifacts:** Localization bug reports and usability checklists.
 
----
-
-## 🛠 My Testing Approach
-
-1.  **Precision:** Applying a decade of experience in high-volume data verification (SAP/1C) to find complex logic flaws.
-2.  **Detail-Oriented Reporting:** Every bug report includes clear steps to reproduce, environment details, and expected vs. actual results.
-3.  **Continuous Improvement:** Ongoing learning in Python and SDET basics to bridge the gap between manual and automated testing.
-
----
-
-## 📈 Platform Experience
-* **uTest:** Active tester focused on functional and localization cycles.
-* **UHRS:** Data labeling and AI model evaluation.
+### 📊 [General QA Artifacts](./General-QA-Artifacts)
+*A collection of fundamental testing documentation.*
+* **Test Case Design:** Comprehensive scenarios for web and mobile.
+* **Approved Bug Reports:** Examples of defects verified and accepted on platforms like **uTest**.
 
 ---
 
-## 📫 Contact Info
-* **Location:** Moving to **Atlanta (Norcross), GA** in May 2026.
-* **Focus:** Open to Manual QA and Localization testing opportunities.
+## 🛠 My Methodology
+
+* **Data Integrity:** Leveraging 10+ years in SAP/1C to ensure system logic and data consistency.
+* **Localization Expertise:** Native Russian / Working English — specialized in L10N testing for global markets.
+* **Professional Reporting:** Clear, actionable documentation designed for efficient developer fixes.
+
+---
+
+## 📫 Contact & Relocation
+* **Current Status:** Moving to **Atlanta (Norcross), GA** in May 2026.
+* **Goal:** Applying engineering precision to deliver flawless user experiences.
 
 > "Quality is not an act, it is a habit."
