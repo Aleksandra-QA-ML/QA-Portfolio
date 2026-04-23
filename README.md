@@ -1,14 +1,35 @@
-# Aleksandra Savostyanova | QA & ML Student
+# QA Portfolio | Aleksandra Savostianova 🎯
 
-### 🎯 About Me
-I am a QA Engineer in training with a background in data management and a passion for Machine Learning. Currently focusing on manual testing and Python automation.
+This repository contains my professional QA artifacts, test documentation, and project reports. It showcases my transition from 10+ years of engineering and data management into Software Quality Assurance.
 
-### 🛠 Tech Stack
-* **Testing:** Manual Testing, Bug Reporting (uTest), DevTools
-* **Languages:** Python (Basic), HTML/CSS
-* **OS/Devices:** Windows, Android (Google Pixel)
+---
 
-### 📁 Projects
-* **[Mobile Performance Deep Dive](./projects/mobile-performance-jank/README.md)** — Identifying UI "Jank" on Android 16 using GPU Profiling.
-* **[VOD Content Audit & Auth Logic](./projects/mobile-app-logic/README.md)** — Testing 250+ items and finding critical Access Bypass defects.
-* **[Cross-Platform UI Testing](./projects/sports-streaming/README.md)** — Windows 10 & Android 16 investigation using Chrome DevTools.
+## 📂 Repository Overview
+
+In this repository, you will find documentation related to:
+
+* **Manual Testing:** Structured test cases, checklists, and detailed bug reports.
+* **Real-World Projects:** Evidence of testing activities, including results from platforms like **uTest** (Approved reports ✅).
+* **System Analysis:** Deep dives into software logic, data integrity, and performance (e.g., Mobile Performance and System Verification).
+
+---
+
+## 🛠 My Testing Approach
+
+1.  **Precision:** Applying a decade of experience in high-volume data verification (SAP/1C) to find complex logic flaws.
+2.  **Detail-Oriented Reporting:** Every bug report includes clear steps to reproduce, environment details, and expected vs. actual results.
+3.  **Continuous Improvement:** Ongoing learning in Python and SDET basics to bridge the gap between manual and automated testing.
+
+---
+
+## 📈 Platform Experience
+* **uTest:** Active tester focused on functional and localization cycles.
+* **UHRS:** Data labeling and AI model evaluation.
+
+---
+
+## 📫 Contact Info
+* **Location:** Moving to **Atlanta (Norcross), GA** in May 2026.
+* **Focus:** Open to Manual QA and Localization testing opportunities.
+
+> "Quality is not an act, it is a habit."
