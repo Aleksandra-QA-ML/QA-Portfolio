@@ -32,11 +32,6 @@ Full-scale content audit of a hybrid media mobile application, focusing on acces
 * **Geo-blocking & Licensing:** Validating regional access logic for global media distribution.
 * **Android 16 Testing:** Validating app behavior on the latest OS build.
 * **Security Testing:** Identifying access bypasses and session vulnerabilities.
-  
-## Visual Evidence
-<img width="1080" height="2399" alt="Screenshot_20260321-143253-redacted_dot_app-redacted_dot_app" src="https://github.com/user-attachments/assets/2a2ba29d-54d0-40d4-ac13-8b6038a10d47" />
-<img width="1080" height="2399" alt="Screenshot_20260320-171227-redacted_dot_app" src="https://github.com/user-attachments/assets/a1a9ab02-2e08-4e07-9642-29f0c94651ff" />
-<img width="1080" height="2399" alt="Screenshot_20260320-171143-redacted_dot_app" src="https://github.com/user-attachments/assets/722569c2-9e0e-4c15-bd41-2a3385799028" />
 
 ---
 *Created as part of the QA Portfolio — Aleksandra Savostyanova*
