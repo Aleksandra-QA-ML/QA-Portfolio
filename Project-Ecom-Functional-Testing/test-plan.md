@@ -22,4 +22,4 @@ This test plan outlines the strategy for manual functional testing of the checko
 * Order confirmation is displayed upon successful submission.
 
 ---
-*Created by Aleksandra Savostianova*
+*Created by Aleksandra Savostianova* 
