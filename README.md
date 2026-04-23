@@ -9,16 +9,16 @@ Data Entry and Records Specialist with 10+ years of experience, currently specia
 ### 🏀 Domain: Sports Media
 *Focus: Real-time data, live streaming, and high-load platforms.*
 
-* [**American Football Draft Tracker**](./Domain-Sports-Media/football-draft-tracker.md) — Testing real-time stats and navigation logic.
-* [**Motorsport Live Streaming & Telemetry**](./Domain-Sports-Media/motorsport-telemetry.md) — Video player stability and ad integration.
-* [**Professional Baseball Stats Platform**](./Domain-Sports-Media/baseball-streaming-stats.md) — Data synchronization and localization.
+* [**American Football Draft Tracker**](./projects/Domain-Sports-Media/baseball-streaming-stats.md) — Testing real-time stats and navigation logic.
+* [**Motorsport Live Streaming & Telemetry**](./projects/Domain-Sports-Media/motorsport-telemetry.md) — Video player stability and ad integration.
+* [**Professional Baseball Stats Platform**](./projects/Domain-Sports-Media/baseball-streaming-stats.md) — Data synchronization and localization.
 
 ### 🎬 Domain: Streaming & Digital Content
 *Focus: Subscription logic, content delivery, and user experience.*
 
-* [**Global Video Streaming & Billing**](./Domain-Streaming-Content/global-video-streaming-billing.md) — End-to-end subscription and payment verification.
-* [**Multi-Format Audio/Video Platform**](./Domain-Streaming-Content/audio-streaming-platform.md) — Podcasts and audiobooks playback stability.
-* [**Specialized E-Reading App**](./Domain-Streaming-Content/ereading-brand-app.md) — Text rendering and cross-device synchronization.
+* [**Global Video Streaming & Billing**](./projects/Domain-Streaming-Content/global-video-streaming-billing.md) — End-to-end subscription and payment verification.
+* [**Multi-Format Audio/Video Platform**](./projects/Domain-Streaming-Content/audio-streaming-platform.md) — Podcasts and audiobooks playback stability.
+* [**Specialized E-Reading App**](./projects/Domain-Streaming-Content/ereading-brand-app.md) — Text rendering and cross-device synchronization.
 
 ---
 
