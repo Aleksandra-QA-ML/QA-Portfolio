@@ -43,3 +43,10 @@ Comprehensive manual testing of an offline Android Todo application. The project
 * [📋 Checklist](./check-list.md) — Comprehensive testing checklist covering all test areas and run results.
 * [🧪 Test Cases](./test-cases.md) — Detailed test cases with preconditions, step-by-step instructions, and expected outcomes.
 * [🐛 Bug Reports](./bugs.md) — Formal defect specifications with exact reproduction steps, severity, and root cause context.
+
+## 📋 Agile Board (YouTrack)
+
+A custom Agile board with swimlanes by functional modules was used to manage tasks, checklists, and the defect lifecycle:
+
+<img width="2560" height="3648" alt="image" src="https://github.com/user-attachments/assets/af14e635-bda9-4d29-9b8e-b2737a644d9a" />
+
