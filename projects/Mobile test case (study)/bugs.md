@@ -25,8 +25,9 @@
 
 **Actual Result:**
 A system security/compatibility warning modal is displayed, warning that the application was built for an older Android version / is potentially unsafe, requiring the user to expand details and tap "Install anyway" to proceed.
-<img width="1080" height="2410" alt="Screenshot_20260929-113454" src="https://github.com/user-attachments/assets/dd6d36ca-8495-4227-965d-f7e285510aef" />
-<img width="1080" height="2410" alt="Screenshot_20260929-113508" src="https://github.com/user-attachments/assets/0a130c7b-7217-46de-aae9-0547a113080d" />
+
+<img width="320" alt="Screenshot_20260929-113454" src="https://github.com/user-attachments/assets/dd6d36ca-8495-4227-965d-f7e285510aef" />
+<img width="320" alt="Screenshot_20260929-113508" src="https://github.com/user-attachments/assets/0a130c7b-7217-46de-aae9-0547a113080d" />
 
 ---
 
@@ -51,7 +52,8 @@ A system security/compatibility warning modal is displayed, warning that the app
 
 **Actual Result:**
 The task was created with an empty title.
-<img width="1080" height="2410" alt="Screenshot_20260929-131906" src="https://github.com/user-attachments/assets/c96463fc-7d27-43e3-af76-6124acbdd614" />
+
+<img width="320" alt="Screenshot_20260929-131906" src="https://github.com/user-attachments/assets/c96463fc-7d27-43e3-af76-6124acbdd614" />
 
 ---
 
@@ -77,7 +79,8 @@ The task was created with an empty title.
 
 **Actual Result:**
 The task was successfully updated with non-Cyrillic characters.
-<img width="1080" height="2410" alt="Screenshot_20260929-132750" src="https://github.com/user-attachments/assets/a8eab455-a624-4075-813a-012cd359a2cc" />
+
+<img width="320" alt="Screenshot_20260929-132750" src="https://github.com/user-attachments/assets/a8eab455-a624-4075-813a-012cd359a2cc" />
 
 ---
 
@@ -104,7 +107,8 @@ The task was successfully updated with non-Cyrillic characters.
 
 **Actual Result:**
 The task was successfully updated with 26 characters.
-<img width="1080" height="2410" alt="Screenshot_20260929-153319" src="https://github.com/user-attachments/assets/38507f5a-67d2-431d-bb12-e6d49f4e3827" />
+
+<img width="320" alt="Screenshot_20260929-153319" src="https://github.com/user-attachments/assets/38507f5a-67d2-431d-bb12-e6d49f4e3827" />
 
 ---
 
@@ -129,7 +133,8 @@ Multi-line task items dynamically adjust container height so that subsequent tas
 
 **Actual Result:**
 The second task overlaps the two-line title of the first task; text is partially obscured.
-<img width="1080" height="2410" alt="Screenshot_20260930-111738" src="https://github.com/user-attachments/assets/bc39edf8-44e7-4823-945c-4af05989174d" />
+
+<img width="320" alt="Screenshot_20260930-111738" src="https://github.com/user-attachments/assets/bc39edf8-44e7-4823-945c-4af05989174d" />
 
 ---
 
@@ -154,6 +159,7 @@ UI layout is optimized for Landscape orientation (e.g., input controls placed si
 
 **Actual Result:**
 The task list is squeezed into an extremely narrow visible area between header/input controls and screen edges. Although scrollable, only a fraction of a task card is visible simultaneously, causing poor usability.
-<img width="2410" height="1080" alt="Screenshot_20260930-111855" src="https://github.com/user-attachments/assets/560c47df-17cd-42b0-a990-dc5672e9d33b" />
+
+<img width="500" alt="Screenshot_20260930-111855" src="https://github.com/user-attachments/assets/560c47df-17cd-42b0-a990-dc5672e9d33b" />
 
 
