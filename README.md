@@ -30,6 +30,3 @@ Data Entry and Records Specialist with 10+ years of experience, currently specia
 
 ---
 
-## 📫 Contact
-* **Location:** Georgia (Moving May 2026)
-* **LinkedIn:** [www.linkedin.com/in/aleksandra-savostianova-052465312]
