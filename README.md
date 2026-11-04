@@ -1,11 +1,27 @@
-# Aleksandra Savostianova | QA & Data Specialist
+# Aleksandra Savostianova | QA Engineer (Web & Mobile)
 
-Data Entry and Records Specialist with 10+ years of experience, currently specializing in Quality Assurance and Machine Learning. Expert in functional, UI/UX, and localization testing for high-traffic media and streaming platforms.
+Quality Assurance Engineer with an engineering background and 10+ years of combined experience in data verification, quality control, and systems audit. Specialized in manual functional Web testing, e-commerce workflows, and Android mobile applications
 
 ---
 
-## 🛠 Projects & Experience (uTest / Professional Portfolio)
+### 🏆 Key QA Achievements & Recognition
+* **uTest Academy All-Stars Cycle Leader**  
+  * Ranked **#1 Cycle Leader** among participating QA testers for superior defect detection, cycle coordination, and execution rigor.
+  * Achieved **100% "Very Valuable" bug rating** (2 out of 2 reports rated Very Valuable by TTL/Customer), demonstrating high business impact, rigorous root cause analysis, and actionable diagnostic logs.
+---
 
+### 📂 Commercial Projects & Cycles (uTest & Testlio)  
+#### 🤖 Domain: AI & Conversational Commerce
+*Focus: LLM response verification, multimodal image analysis, and conversational retail.*
+
+* [**Retail AI Shopping Assistant**](projects/Domain-AI-Validation/retail-ai-shopping-assistant.md) — Multimodal plant care vision validation, session context leak detection, and PDP review summarization (**Test Score Leader, 100% Approval**).
+  
+#### 🛒 Domain: E-Commerce & Retail Operations
+*Focus: B2B onboarding workflows, hardware configuration wizards, and state persistence.*
+
+* [**B2B Retail & Device Onboarding Platform**](projects/Domain-ECommerce-Operations/b2b-retail-device-onboarding.md) — Functional testing of device setup wizards and form state persistence.
+* [**Custom Photo Print & Framing Platform**](projects/Domain-ECommerce-Operations/photo-print-staging-web.md) — Staging parity verification, deep-link video rendering, and browser history routing (**Test Score Leader, 100% Approval**).
+  
 ### 🏀 Domain: Sports Media
 *Focus: Real-time data, live streaming, and high-load platforms.*
 
@@ -19,14 +35,19 @@ Data Entry and Records Specialist with 10+ years of experience, currently specia
 * [**Global Video Streaming & Billing**](./projects/Domain-Streaming-Content/global-video-streaming-billing.md) — End-to-end subscription and payment verification.
 * [**Multi-Format Audio/Video Platform**](./projects/Domain-Streaming-Content/audio-streaming-platform.md) — Podcasts and audiobooks playback stability.
 * [**Specialized E-Reading App**](./projects/Domain-Streaming-Content/ereading-brand-app.md) — Text rendering and cross-device synchronization.
+* [**Graphic Audiobooks & Digital Media App**](./projects/Domain-Streaming-Content/graphic-audio-android.md) — Offline playback integrity, audio engine controls, and content collection sync.
 
+#### 🏛 Domain: Corporate FinTech & Enterprise Portals
+*Focus: Role-based access control (RBAC), session persistence, and production release validation.*
+
+* [**Enterprise Investment & Corporate Portal**](projects/Domain-FinTech-Corporate/im-corporate-financial-portal.md) — Post-release verification, RBAC menu leaks, and authentication persistence.
 ---
 
 ## 🔧 Technical Skills
-* **Testing:** Manual Functional, UI/UX, Localization (L10N), Regression.
-* **Specialization:** Streaming (OTT), Media Telemetry, Billing Workflows.
-* **Data:** 10+ years in Data Entry, Records Management, and Metrology.
-* **Tech:** HTML, CSS, Windows/Android/iOS environment.
+* **Testing:** Manual Functional, Regression, UI/UX, Exploratory, Cross-Browser Web, Android Mobile Testing, AI Response & Data Validation
+* **Traffic & Debugging:** Chrome DevTools, Proxyman, Charles Proxy, Android Debug Bridge (`adb logcat`), Bash (`quick_logcat.sh`)
+* **API & Databases:** Postman (REST API validation), SQL (MySQL Workbench), Python fundamentals
+* **Defect Management:** YouTrack, Jira, Test Cases & Checklists Design, Root Cause Analysis (RCA)
 
 ---
 
