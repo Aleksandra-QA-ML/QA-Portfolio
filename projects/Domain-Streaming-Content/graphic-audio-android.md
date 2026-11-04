@@ -1,24 +1,49 @@
-# Graphic Audiobooks & Digital Media Android App
+# Case Study: Digital Audiobooks & Media Engine Validation (Android)
 
-## Overview
-Functional, exploratory, and smoke testing of an Android audio streaming application. The primary focus of the test cycle was verifying core audio playback stability, regression bug fixes in a new build, and offline media availability.
+### 🎯 Project Overview
 
-## Testing Scope & Objectives
-* **Build Verification & Regression:** Validated resolved defects related to the audio player engine, UI synchronization, and process termination.
-* **Offline Playback & Local Storage:** Verified media playback in Airplane Mode, ensuring the player resolves downloaded local assets instead of attempting network streaming, with accurate error messaging for non-downloaded content.
-* **Audio Controls & Background Persistence:** Tested 30s fast-forward/rewind, sleep timer triggers, and playback speed persistence across app restarts.
-* **Hardware & System Integration:** Verified notification drawer tap behaviors and Android Auto menu integrations.
+Full-scale functional and exploratory testing of a native Android digital audiobook application, focusing on audio player engine stability, regression fixes, and offline local media persistence.
 
-## Environment & Tools
-* **Device:** Google Pixel (Android)
-* **Tools:** Android Debug Bridge (`adb logcat`), Chrome DevTools, Bash
-* **Testing Types:** Exploratory Testing, Smoke Testing, Functional Verification, Regression Testing
+### 📱 Test Environment
 
-## Identified Defects (100% Approval Rate)
-All logged issues were verified and approved by the customer/TTL without rejections:
+* **Device:** Google Pixel 7
+* **OS:** Android 17
+* **Scope:** Core Audio Playback, Offline Airplane Mode, Filter & Search Engine, Android Auto Integration
 
-1. `[Collections]` Purchased content does not appear in user collections after successful transaction.
-2. `[Filter]` The "Most Recent (default)" sorting option is missing from the filter dropdown.
-3. `[Filter]` The "Cancel" action button is missing in the sort/filter modal.
-4. `[Search]` Search reset results display incorrectly after clearing the input field.
-5. `[Search]` Empty search request is handled improperly by the search view.
+### 📊 Audit Summary & Status
+
+* **Smoke & Core Playback:** 100% Completed (audio seek controls, sleep timer, playback speed persistence).
+* **Offline Mode Verification:** 100% Completed (local file resolution vs. streaming fallback logic in Airplane Mode).
+* **Defect Approval Rate:** 100% Approved (5 out of 5 submitted bug reports verified by TTL/Customer).
+
+### 🔍 Critical Findings (Bugs)
+
+#### 1. [Data Loss / Synchronization] — Missing Purchased Content
+* **Defect:** Purchased digital content does not appear in user collections following successful order completion.
+* **Risk:** High (Direct customer churn, loss of revenue, and escalated customer support inquiries).
+
+#### 2. [UI / Navigation Flaw] — Missing Default Sort Control
+* **Defect:** The "Most Recent (default)" sorting option is completely absent from the collection filter dropdown menu.
+* **Risk:** Medium (Degraded catalog navigation and failure to adhere to functional specifications).
+
+#### 3. [UX / Modal Blocker] — Missing Cancel Action in Filter Modal
+* **Defect:** The "Cancel" button is missing in the sort/filter dialog, preventing users from safely exiting without applying changes.
+* **Risk:** Medium (User frustration and violation of standard Android modal control guidelines).
+
+#### 4. [Search Display Anomaly] — Search Reset Rendering Glitch
+* **Defect:** Clearing the search input field results in an incorrect visual rendering and blank state instead of restoring the default catalog view.
+* **Risk:** Medium (Disrupted user search journey and broken state persistence).
+
+#### 5. [Input Validation] — Improper Handling of Empty Query
+* **Defect:** Submitting an empty search request causes unexpected application behavior and unhandled UI state.
+* **Risk:** Low/Medium (Failure to implement graceful boundary/input validation).
+
+### 🛠 Skills & Tools
+
+* **Mobile Testing:** Android 17 verification, notification actions, and Android Auto integration checks.
+* **Offline State Testing:** Validating storage persistence, local asset resolution, and network termination in Airplane Mode.
+* **Log Analysis:** Capturing device telemetry, UI events, and stack traces via Android Debug Bridge (`adb logcat`).
+* **Exploratory & Smoke Testing:** Designing boundary test scenarios for search, filtering, and checkout asset synchronization.
+
+---
+*Created as part of the QA Portfolio — Aleksandra Savostianova*
