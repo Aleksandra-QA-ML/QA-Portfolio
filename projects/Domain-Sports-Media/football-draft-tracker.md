@@ -1,39 +1,50 @@
-# Project: American Football Draft Tracker & Statistics Web-App
+# Case Study: American Football Draft Tracker & Live Statistics Web Platform
 
-## 📋 Project Overview
-Functional and UI/UX testing of a high-traffic web application designed for real-time tracking of professional football draft events. The testing focused on the stability of dynamic content, navigation logic, and server-side error handling during peak user activity.
+### 🎯 Project Overview
 
-* **Platform:** Web (Desktop)
-* **Browser:** Google Chrome
+Functional, UI/UX, and regression testing for a high-traffic sports web platform dedicated to live draft tracking, real-time player scoring, and statistical feeds. The cycle focused on verifying interface stability, dynamic DOM synchronization, pagination state management, and server-side fault tolerance under simulated peak live-event loads.
+
+### 💻 Test Environment
+
+* **Platform:** Web Desktop
 * **OS:** Windows 10
-* **Testing Type:** Functional, UI/UX, and Regression Testing
+* **Browser:** Google Chrome (Latest Stable)
+* **Scope:** Real-Time Scoring Toggles, Pagination & Scroll Anchors, Carousel Navigation, Promotional Banners, Server Connectivity & Error Handling
+
+### 📊 Audit Summary & Status
+
+* **Functional & Regression Execution:** 100% Completed (pre-defined test suites and exploratory testing on uTest).
+* **Defect Approval Rate:** 100% Approved (5 out of 5 submitted bug reports verified and accepted by the client engineering team).
+* **Network & DOM Inspection:** Monitored HTTP response statuses (5xx/4xx), layout shifts, and event listener lag using Chrome DevTools.
+
+### 🔍 Critical Findings (Bugs)
+
+#### 1. [Server Stability / Functional Blocker] — 503 Service Unavailable on Footer Navigation
+* **Defect:** Accessing key footer navigation links triggered a persistent `503 Service Unavailable` error, indicating an unhandled server-side route failure.
+* **Risk:** High (Broken critical user journeys, negative impact on SEO indexing, and loss of traffic to secondary portal pages).
+
+#### 2. [Visual UI / Click Interception] — Promotional Banner Overlaps Primary Navigation
+* **Defect:** Sticky promotional banner failed to compute dynamic viewport z-index, causing it to overlap the main header and intercept user click events intended for the primary navigation menu.
+* **Risk:** High (Directly blocked users from navigating the site, creating perceived unresponsive UI states).
+
+#### 3. [UX / Navigation Logic] — Page Scroll Fails to Reset to Top on Pagination Switch
+* **Defect:** Advancing to the next page in long player lists maintained the current scroll position at the bottom of the viewport instead of smoothly resetting to the top of the data table.
+* **Risk:** Medium (Forced unnecessary manual scrolling across deep catalogs, degrading real-time draft analysis).
+
+#### 4. [Performance / UI Latency] — Significant UI Latency on "Show Scores" Toggle
+* **Defect:** Toggling the live "Show Scores" filter caused a noticeable multi-second rendering freeze while parsing updated state without displaying an asynchronous loading indicator.
+* **Risk:** Medium (Perceived application unresponsiveness during fast-paced live draft broadcasts).
+
+#### 5. [Functional / Carousel Integrity] — Specific Carousel Cards Fail to Resolve Links
+* **Defect:** Target promotional cards within the content carousel failed to load asset media and refused to trigger destination route handlers on click.
+* **Risk:** Medium (Degraded content discovery and broken engagement funnels).
+
+### 🛠 Skills & Tools
+
+* **Web Functional & UI/UX Testing:** Cross-checking interactive widgets, carousel components, and promotional banner layouts.
+* **Network Diagnostics:** Monitoring HTTP traffic, backend API responses, and server error codes (`503 Service Unavailable`) via Chrome DevTools Network panel.
+* **Navigation & Viewport State:** Auditing scroll positions, window anchor hooks, and pagination logic on long data feeds.
+* **Performance Assessment:** Identifying rendering bottlenecks, DOM reflows, and filter latency during dynamic state changes.
 
 ---
-
-## 🛠 Testing Areas
-* **Real-time Data Handling:** Verification of "Show Scores" toggles and live data synchronization.
-* **Navigation Logic:** Testing pagination behavior and scroll-to-top functionality during deep list browsing.
-* **UI/UX Integrity:** Identification of overlapping elements and layout shifts that impede user interaction.
-* **Connectivity & Server Health:** Monitoring for broken endpoints and critical server errors (5xx).
-
----
-
-## 🐞 Identified & Approved Bug Reports
-
-| ID | Bug Summary | Severity | Type |
-| :--- | :--- | :--- | :--- |
-| 01 | **503 Service Unavailable** error when clicking footer navigation links | Critical | Functional |
-| 02 | Page scroll does not reset to the top after switching pagination pages | Medium | UI/UX |
-| 03 | Slow system response time when toggling the "Show Scores" filter | Medium | Performance |
-| 04 | Promotional banner overlaps main navigation/content, blocking clicks | High | UI/Visual |
-| 05 | Specific products in the carousel fail to load/navigate properly | Medium | Functional |
-
----
-
-## 🎯 Key Achievements
-* Identified a **critical server-side error (503)**, preventing potential data loss or broken user journeys in the footer section.
-* Improved user experience by reporting a **pagination logic flaw** that hindered smooth navigation through long draft lists.
-* Ensured visual stability by documenting **banner overlap issues** that affected core site functionality.
-
----
-*Note: This project was conducted via uTest. 
+*Created as part of the QA Portfolio — Aleksandra Savostianova*
