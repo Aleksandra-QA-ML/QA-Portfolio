@@ -42,13 +42,14 @@ Quality Assurance Engineer with an engineering background and 10+ years of combi
 
 * [**Enterprise Investment & Corporate Portal**](projects/Domain-FinTech-Corporate/im-corporate-financial-portal.md) — Post-release verification, RBAC menu leaks, and authentication persistence.
 
-#### 🎓 Academy & Technical Verification
+### 🎓 Academy Leadership & Intensive Verification
 *Focus: Cycle leadership, deep network traffic interception, and mobile log automation.*
 * [**uTest Academy All-Stars Cycle Leader**](projects/Academy-Verification/hospitality-booking-app-allstars.md) — Pricing engine checkout discrepancy, multi-item wishlist comparison state (**uTest All-Stars Cycle Leader, 100% Very Valuable, 2/2**).
 * [**Global Sports Retail Platform**](projects/Academy-Verification/academy-challenge-sports-retail.md) — Cart threshold limit bypass (12 -> 13), PLP color swatch state resets, and price sorting failures (**uTest Academy Challenge, 5 Approved Bugs**).
 * [**Fashion & Apparel Retail Portal**](projects/Academy-Verification/proxy-apparel-retail-audit.md) — HTTP proxy traffic inspection, catalog query payloads, and discount price sorting failures (**100% Approval**).
 * [**Official Football Club Mobile App**](projects/Academy-Verification/football-club-mobile-app.md) — Live commentary audio stability, catalog-to-PDP pricing mismatch, and touch gesture responsiveness (**100% Approval, 3/3 Approved**).
 * [**Apparel & Accessories Desktop Web Audit**](projects/Academy-Verification/desktop-apparel-retail-audit.md) — Quick Add cart limit bypass, price formatting glitch, and CTA consistency (**Cycle Test Score Leader, 3/3 Approved, 1 Very Valuable**).
+* [**Android Mobile App Intensive (Hands-on Study)**](projects/Mobile%20test%20case%20(study)/) — Comprehensive mobile test suites, checklist execution, ADB logcat debugging, and detailed defect reports for native Android flows.
 ---
 
 ## 🔧 Technical Skills
