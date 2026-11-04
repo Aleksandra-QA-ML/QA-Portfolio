@@ -21,3 +21,5 @@ Quality Assurance for a world-leading video production and streaming giant. The 
 * Guaranteed 100% stability in the critical purchase path (checkout) by executing rigorous test suites.
 * Verified billing logic for a global user base, ensuring correct currency and plan display.
 * Demonstrated high-precision testing in a secure, high-stakes financial environment for a Tier-1 media provider.
+
+*Created as part of the QA Portfolio — Aleksandra Savostianova*
