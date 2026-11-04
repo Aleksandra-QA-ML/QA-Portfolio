@@ -29,5 +29,5 @@ While executing standard test cases, I identified subtle visual stutters during 
 * **Anonymization:** All application content and identifiable UI elements have been **redacted**. 
 * **Focus:** The focus of this case study is strictly on the **GPU Profiling graphs** and the technical methodology used.
 
-*Created as part of the QA Portfolio — Aleksandra Savostyanova*
+*Created as part of the QA Portfolio — Aleksandra Savostianova*
 
