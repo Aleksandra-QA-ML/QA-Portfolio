@@ -21,15 +21,16 @@ Quality Assurance Engineer with an engineering background and 10+ years of combi
 
 * [**B2B Retail & Device Onboarding Platform**](projects/Domain-ECommerce-Operations/b2b-retail-device-onboarding.md) — Functional testing of device setup wizards and form state persistence.
 * [**Custom Photo Print & Framing Platform**](projects/Domain-ECommerce-Operations/photo-print-staging-web.md) — Staging parity verification, deep-link video rendering, and browser history routing (**Test Score Leader, 100% Approval**).
+* [**DemoShopping E-Commerce REST API Suite**](api-testing/) — End-to-end CRUD lifecycle, authenticated cart state, dynamic `{{key}}` token binding, order processing, and SLA schema assertions (**Postman Collection v2.1, 100% Pass Rate**).
   
-### 🏀 Domain: Sports Media
+#### 🏀 Domain: Sports Media
 *Focus: Real-time data, live streaming, and high-load platforms.*
 
 * [**American Football Draft Tracker**](./projects/Domain-Sports-Media/baseball-streaming-stats.md) — Testing real-time stats and navigation logic.
 * [**Motorsport Live Streaming & Telemetry**](./projects/Domain-Sports-Media/motorsport-telemetry.md) — Video player stability and ad integration.
 * [**Professional Baseball Stats Platform**](./projects/Domain-Sports-Media/baseball-streaming-stats.md) — Data synchronization and localization.
 
-### 🎬 Domain: Streaming & Digital Content
+#### 🎬 Domain: Streaming & Digital Content
 *Focus: Subscription logic, content delivery, and user experience.*
 
 * [**Global Video Streaming & Billing**](./projects/Domain-Streaming-Content/global-video-streaming-billing.md) — End-to-end subscription and payment verification.
@@ -42,7 +43,7 @@ Quality Assurance Engineer with an engineering background and 10+ years of combi
 
 * [**Enterprise Investment & Corporate Portal**](projects/Domain-FinTech-Corporate/im-corporate-financial-portal.md) — Post-release verification, RBAC menu leaks, and authentication persistence.
 
-### 🎓 Academy Leadership & Intensive Verification
+#### 🎓 Academy Leadership & Intensive Verification
 *Focus: Cycle leadership, deep network traffic interception, and mobile log automation.*
 * [**uTest Academy All-Stars Cycle Leader**](projects/Academy-Verification/hospitality-booking-app-allstars.md) — Pricing engine checkout discrepancy, multi-item wishlist comparison state (**uTest All-Stars Cycle Leader, 100% Very Valuable, 2/2**).
 * [**Global Sports Retail Platform**](projects/Academy-Verification/academy-challenge-sports-retail.md) — Cart threshold limit bypass (12 -> 13), PLP color swatch state resets, and price sorting failures (**uTest Academy Challenge, 5 Approved Bugs**).
@@ -52,7 +53,7 @@ Quality Assurance Engineer with an engineering background and 10+ years of combi
 * [**Android Mobile App Intensive (Hands-on Study)**](projects/Mobile%20test%20case%20(study)/) — Comprehensive mobile test suites, checklist execution, ADB logcat debugging, and detailed defect reports for native Android flows.
 ---
 
-## 🔧 Technical Skills
+### 🔧 Technical Skills
 * **Testing:** Manual Functional, Regression, UI/UX, Exploratory, Cross-Browser Web, Android Mobile Testing, AI Response & Data Validation
 * **Traffic & Debugging:** Chrome DevTools, Proxyman, Charles Proxy, Android Debug Bridge (`adb logcat`), Bash (`quick_logcat.sh`)
 * **API & Databases:** Postman (REST API validation), SQL (MySQL Workbench), Python fundamentals
