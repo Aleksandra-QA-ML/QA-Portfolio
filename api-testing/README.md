@@ -103,3 +103,14 @@ pm.test("Order objects have required fields", function () {
         pm.expect(jsonData[0]).to.have.property('totalPrice');
     }
 });
+```
+---
+### ⚙️ Collection Variables
+
+| Variable | Description | Resolved At |
+| :--- | :--- | :--- |
+| `url` | Base URL target endpoint | Environment / Pre-set |
+| `key` | Bearer auth token | Dynamic (`POST /login`) |
+| `product_id` | Created product entity ID | Dynamic (`POST /add-product`) |
+| `cart_item_id`| Current cart line-item ID | Dynamic (`GET /getCart`) |
+| `orderId` | Active order entity ID | Dynamic (`POST /orders`) |
