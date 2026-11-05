@@ -1,0 +1,2337 @@
+{
+  "info": {
+    "_postman_id": "bf4c98cf-4cca-4759-9cbf-0bc605b75b62",
+    "name": "DemoShopping",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53615538",
+    "_collection_link": "https://go.postman.co/collection/53615538-bf4c98cf-4cca-4759-9cbf-0bc605b75b62?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Add product",
+          "item": [
+            {
+              "name": "Add products/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\nconst responseText = pm.response.text();\n\n// Log the full response to see what the server returned\nconsole.log(\"Ответ от сервера:\", responseText);\n\n// Extract the ID from the plain text response using regex\nconst match = responseText.match(/\\d+/);\nconst productId = match ? match[0] : null;\n\npm.collectionVariables.set(\"product_id\", productId);\n\n// Verify what was saved to the variable\nconsole.log(\"Значение в product_id:\", pm.collectionVariables.get(\"product_id\"));\n\npm.test('Response contains product ID', function () {\n    const responseText = pm.response.text();\n    const match = responseText.match(/\\d+/);\n    pm.expect(match).to.not.be.null;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Example Product\",\r\n  \"description\": \"This is an example product.\",\r\n  \"price\": 100,\r\n  \"category\": \"Electronics\",\r\n  \"manufacturer\": \"Example Manufacturer\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}add-product",
+                  "host": [
+                    "{{url}}add-product"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add products/status400",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\npm.test('Response indicates bad request', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(000);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": 1,\r\n  \"description\": \"This is an example product.\",\r\n  \"price\": 100,\r\n  \"category\": \"Electronics\",\r\n  \"manufacturer\": \"Example Manufacturer\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}add-product",
+                  "host": [
+                    "{{url}}add-product"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Get Product ID",
+          "item": [
+            {
+              "name": "Product ID/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Response has product fields', function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.have.property('product_id');\n    pm.expect(jsonData).to.have.property('name');\n    pm.expect(jsonData).to.have.property('price');\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Product ID/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test('Response indicates not found', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Renew product",
+          "item": [
+            {
+              "name": "Renew product/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Response has updated product fields', function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.have.property('product_id');\n    pm.expect(jsonData).to.have.property('name');\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 100,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Renew product/status400",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\npm.test('Response indicates bad request', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Renew product/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test('Response indicates not found', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Partly renew product",
+          "item": [
+            {
+              "name": "Partly renew/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Response has updated product fields', function () {\n    pm.expect(pm.response.text()).to.include('частично обновлён');\n});\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 299.00,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Partly renew/status400",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\n\npm.test('Response indicates bad request', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": ,\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Partly renew/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test('Response has updated product fields', function () {\n    pm.expect(pm.response.text()).to.include('Товар с таким ID не найден');\n});\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/999",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Find by category",
+          "item": [
+            {
+              "name": "Find by category/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Response is an array', function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.be.an('array');\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/FindByCategory?category=string",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "FindByCategory"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Find by category/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test(\"Response body contains 'Товары в данной категории не найдены'\", function () {\n    pm.expect(pm.response.text()).to.include('Товары в данной категории не найдены');\n});\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/FindByCategory?category=0",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "FindByCategory"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Find by manufacture",
+          "item": [
+            {
+              "name": "Find by manufacturer/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Response is an array', function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.be.an('array');\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/FindByManufacturer?manufacturer=string",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "FindByManufacturer"
+                  ],
+                  "query": [
+                    {
+                      "key": "manufacturer",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Find by manufacturer/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test(\"Response body contains 'Товары данного производителя не найдены'\", function () {\n    pm.expect(pm.response.text()).to.include('Товары данного производителя не найдены');\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/FindByManufacturer?manufacturer=\"\"",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "FindByManufacturer"
+                  ],
+                  "query": [
+                    {
+                      "key": "manufacturer",
+                      "value": "\"\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Find by shipping",
+          "item": [
+            {
+              "name": "Find by shipping/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Each product has required fields', function () {\n    var jsonData = pm.response.json();\n    if (jsonData.length > 0) {\n        pm.expect(jsonData[0]).to.have.property('product_id');\n        pm.expect(jsonData[0]).to.have.property('name');\n        pm.expect(jsonData[0]).to.have.property('freeShipping');\n    }\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/FindByShipping?freeShipping=true",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "FindByShipping"
+                  ],
+                  "query": [
+                    {
+                      "key": "freeShipping",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Find by shipping/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/FindByShipping123",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "FindByShipping123"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Filter",
+          "item": [
+            {
+              "name": "Filter/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Response is an array', function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.be.an('array');\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/filter?freeShipping=true",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "filter"
+                  ],
+                  "query": [
+                    {
+                      "key": "freeShipping",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Filter/status400",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 400 Bad Request\", function () {\n    pm.response.to.have.status(400);\n});\n\n\npm.test('Response indicates bad request', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/filter?category=&manufacturer=&freeShipping=true&minPrice=0%&maxPrice=0",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "filter"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": ""
+                    },
+                    {
+                      "key": "manufacturer",
+                      "value": ""
+                    },
+                    {
+                      "key": "freeShipping",
+                      "value": "true"
+                    },
+                    {
+                      "key": "minPrice",
+                      "value": "0%"
+                    },
+                    {
+                      "key": "maxPrice",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Delete product",
+          "item": [
+            {
+              "name": "Delete product/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test('Response confirms deletion', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete product/status403",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 403\", function () {\n    pm.response.to.have.status(403);\n});\n\npm.test('Response indicates forbidden', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/1",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete product/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\n\npm.test('Response indicates not found', function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}products/id/{{product_id}}",
+                  "host": [
+                    "{{url}}products"
+                  ],
+                  "path": [
+                    "id",
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Add to cart",
+          "item": [
+            {
+              "name": "Add to cart/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\npm.test(\"Response confirms item added\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{key}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productId\": 6,\r\n  \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart",
+                  "host": [
+                    "{{url}}cart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add to cart/status400",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\npm.test(\"Response indicates bad request\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productId\": 0,\r\n  \"quantity\": ноль\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart",
+                  "host": [
+                    "{{url}}cart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add to cart/status401",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 401\", function () {\n    pm.response.to.have.status(401);\n});\npm.test(\"Response indicates unauthorized\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productId\": 1,\r\n  \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart",
+                  "host": [
+                    "{{url}}cart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add to cart/status500",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 500\", function () {\n    pm.response.to.have.status(500);\n});\npm.test(\"Response indicates server error\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productId\": 0,\r\n  \"quantity\": 0\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart",
+                  "host": [
+                    "{{url}}cart"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Get cart",
+          "item": [
+            {
+              "name": "Contains of cart/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\npm.test(\"Response is an array\", function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.be.an(\"array\");\n});\npm.test(\"Each cart item has required fields\", function () {\n    var jsonData = pm.response.json();\n    if (jsonData.length > 0) {\n        pm.expect(jsonData[0]).to.have.property(\"cart_item_id\");\n        pm.expect(jsonData[0]).to.have.property(\"product_id\");\n        pm.expect(jsonData[0]).to.have.property(\"quantity\");\n    }\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});\nvar jsonData = pm.response.json();\nif (jsonData.length > 0) {\n    pm.collectionVariables.set(\"cart_item_id\", jsonData[0].cart_item_id);\n}"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}getCart",
+                  "host": [
+                    "{{url}}getCart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Contains of cart/status401",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 401\", function () {\n    pm.response.to.have.status(401);\n});\npm.test(\"Response indicates unauthorized\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}getCart",
+                  "host": [
+                    "{{url}}getCart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Contains of cart/status500",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 500\", function () {\n    pm.response.to.have.status(500);\n});\npm.test(\"Response indicates server error\", function () {\n    const responseText = pm.response.text('Ошибка сервера при получении содержимого корзины');\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "key",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}getCart",
+                  "host": [
+                    "{{url}}getCart"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Renew qty",
+          "item": [
+            {
+              "name": "Renew qty of items in cart/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\npm.test(\"Response indicates not found\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{product_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Renew qty of items in cart/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\npm.test(\"Response confirms quantity updated\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{cart_item_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{cart_item_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Renew qty of items in cart/status500",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 500\", function () {\n    pm.response.to.have.status(500);\n});\npm.test(\"Response indicates server error\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"quantity\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{cart_item_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{cart_item_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Renew qty of items in cart/status400",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\npm.test(\"Response indicates bad request\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"quantity\": ноль\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{cart_item_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{cart_item_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Renew qty of items in cart/status401",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 401\", function () {\n    pm.response.to.have.status(401);\n});\npm.test(\"Response indicates unauthorized\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{cart_item_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{cart_item_id}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Clear cart",
+          "item": [
+            {
+              "name": "Delete item from cart/status404",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\n    pm.response.to.have.status(404);\n});\npm.test(\"Response indicates not found\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{product_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{product_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete item from cart/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\npm.test(\"Response confirms item deleted\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{cart_item_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{cart_item_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete item from cart/status400",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\n    pm.response.to.have.status(400);\n});\npm.test(\"Response indicates bad request\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/null",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "null"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete item from cart/status401",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 401\", function () {\n    pm.response.to.have.status(401);\n});\npm.test(\"Response indicates unauthorized\", function () {\n    const responseText = pm.response.text();\n    pm.expect(responseText).to.not.be.empty;\n});\npm.test(\"Response time is less than 500ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}cart/{{cart_item_id}}",
+                  "host": [
+                    "{{url}}cart"
+                  ],
+                  "path": [
+                    "{{cart_item_id}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{key}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "Pay/status401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {\r",
+                  "    pm.response.to.have.status(401);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response contains authorization error message\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Требуется авторизация\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"card_type\": \"VISA\",\r\n  \"card_code\": \"string\",\r\n  \"expiry_month\": 0,\r\n  \"expiry_year\": 0,\r\n  \"cvv\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"email_paypal\": \"user@example.com\"\r\n}"
+            },
+            "url": {
+              "raw": "{{url}}pay",
+              "host": [
+                "{{url}}pay"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pay/status400",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 400 \", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response contains authorization error message\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Недостаточно средств на карте.\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{key}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"card_type\": \"VISA\",\r\n  \"card_code\": \"8820354696467284\",\r\n  \"expiry_month\": 12,\r\n  \"expiry_year\": 26,\r\n  \"cvv\": \"123\",\r\n  \"email\": \"user@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}pay",
+              "host": [
+                "{{url}}pay"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pay/status200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200 \", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response contains authorization error message\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Платеж успешно проведен, заказы оплачены и даты обновлены.\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{key}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"card_type\": \"VISA\",\r\n  \"card_code\": \"8820354696467284\",\r\n  \"expiry_month\": 12,\r\n  \"expiry_year\": 26,\r\n  \"cvv\": \"123\",\r\n  \"email\": \"user@example.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}pay",
+              "host": [
+                "{{url}}pay"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Balance/status200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Балансы успешно обновлены.\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}updateBalances",
+              "host": [
+                "{{url}}updateBalances"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{key}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Create Orders",
+      "item": [
+        {
+          "name": "Get orders list",
+          "item": [
+            {
+              "name": "Get orders list/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\npm.test(\"Response is an array\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.be.an(\"array\");\r\n});\r\npm.test(\"Each cart item has required fields\", function () {\r\n    var jsonData = pm.response.json();\r\n    if (jsonData.length > 0) {\r\n        pm.expect(jsonData[0]).to.have.property(\"product_id\");\r\n        pm.expect(jsonData[0]).to.have.property(\"quantity\");\r\n    }\r\n});\r\npm.test(\"Response time is less than 500ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(500);\r\n});\r\nvar jsonData = pm.response.json();\r\nif (jsonData.length > 0) {\r\n    pm.collectionVariables.set(\"cart_item_id\", jsonData[0].cart_item_id);\r\n}"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}user-orders",
+                  "host": [
+                    "{{url}}user-orders"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Create Orders",
+          "item": [
+            {
+              "name": "Create Orders/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "var jsonData = pm.response.json();\r\nif (jsonData.length > 0) {\r\n    pm.collectionVariables.set(\"orderId\", jsonData[0].orderId);\r\n}\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\npm.test(\"Заказ успешно создан\", function () {\r\n    const responseText = pm.response.text();\r\n    pm.expect(responseText).to.not.be.empty;\r\n});\r\npm.test(\"Response time is less than 500ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(500);\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}orders",
+                  "host": [
+                    "{{url}}orders"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Update quantity",
+          "item": [
+            {
+              "name": "Update quantity/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test('Response has updated product fields', function () {\r\n    pm.expect(pm.response.text()).to.include('Количество товара в заказе успешно обновлено');\r\n});\r\n\r\npm.test('Response time is less than 500ms', function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(500);\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}orders/764/products/8",
+                  "host": [
+                    "{{url}}orders"
+                  ],
+                  "path": [
+                    "764",
+                    "products",
+                    "8"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Update orders total",
+          "item": [
+            {
+              "name": "Update orders total/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}update-orders-total",
+                  "host": [
+                    "{{url}}update-orders-total"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Delete orders",
+          "item": [
+            {
+              "name": "Delete order/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Response message is correct\", function () {\n    pm.expect(pm.response.text()).to.include(\"Товар успешно удален из заказа.\");\n});"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}orders/760/products/8",
+                  "host": [
+                    "{{url}}orders"
+                  ],
+                  "path": [
+                    "760",
+                    "products",
+                    "8"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Orders history",
+          "item": [
+            {
+              "name": "Orders history/status200",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response content-type is application/json\", function () {",
+                      "    pm.response.to.have.header(\"Content-Type\");",
+                      "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body is an array\", function () {",
+                      "    const jsonData = pm.response.json();",
+                      "    pm.expect(jsonData).to.be.an('array');",
+                      "});",
+                      "",
+                      "pm.test(\"Order objects have required fields\", function () {",
+                      "    const jsonData = pm.response.json();",
+                      "    if (jsonData.length > 0) {",
+                      "        pm.expect(jsonData[0]).to.have.property('order_id');",
+                      "        pm.expect(jsonData[0]).to.have.property('productName');",
+                      "        pm.expect(jsonData[0]).to.have.property('totalPrice');",
+                      "    }",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}api/orders-history",
+                  "host": [
+                    "{{url}}api"
+                  ],
+                  "path": [
+                    "orders-history"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ],
+      "description": "This folder covers the full order management lifecycle for the DemoShopping API. It includes requests for creating new orders, retrieving the orders list, updating item quantities and order totals, deleting orders, and viewing order history. Each operation is organized into its own sub-folder with corresponding success scenario requests.",
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{key}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "List of all products",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\n\npm.test('Response is an array', function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.be.an('array');\n})\n\npm.test('Each product has required fields', function () {\n    var jsonData = pm.response.json();\n    if (jsonData.length > 0) {\n        pm.expect(jsonData[0]).to.have.property('product_id');\n        pm.expect(jsonData[0]).to.have.property('name');\n        pm.expect(jsonData[0]).to.have.property('price');\n    }\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}products/",
+          "host": [
+            "{{url}}products"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login/status200",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\n\nvar jsonData = pm.response.json();\n\npm.collectionVariables.set(\"key\", jsonData.token);\n\npm.test('Status code is 200', function () {\n    pm.response.to.have.status(200);\n})\n\npm.test('Response has token', function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData).to.have.property('token');\n    pm.expect(jsonData.token).to.be.a('string').and.not.empty;\n})\n\npm.test('Content-Type is JSON', function () {\n    pm.response.to.have.header('Content-Type');\n    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\n})\n\npm.test('Response time is less than 500ms', function () {\n    pm.expect(pm.response.responseTime).to.be.below(500);\n})"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json, text/plain, */*"
+          },
+          {
+            "key": "accept-language",
+            "value": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7"
+          },
+          {
+            "key": "content-type",
+            "value": "application/json"
+          },
+          {
+            "key": "origin",
+            "value": "https://intern.demoshopping.ru"
+          },
+          {
+            "key": "priority",
+            "value": "u=1, i"
+          },
+          {
+            "key": "referer",
+            "value": "https://intern.demoshopping.ru/login"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"150\", \"Google Chrome\";v=\"150\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "sec-fetch-dest",
+            "value": "empty"
+          },
+          {
+            "key": "sec-fetch-mode",
+            "value": "cors"
+          },
+          {
+            "key": "sec-fetch-site",
+            "value": "same-origin"
+          },
+          {
+            "key": "sec-gpc",
+            "value": "1"
+          },
+          {
+            "key": "user-agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"demoshop_test1\",\"password\":\"012345678t\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://intern.demoshopping.ru/login",
+          "protocol": "https",
+          "host": [
+            "intern",
+            "demoshopping",
+            "ru"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "012345678t",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "demoshop_test1",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": ""
+    },
+    {
+      "key": "product_id",
+      "value": ""
+    },
+    {
+      "key": "key",
+      "value": ""
+    },
+    {
+      "key": "login",
+      "value": ""
+    },
+    {
+      "key": "cart_item_id",
+      "value": ""
+    }
+  ]
+}
