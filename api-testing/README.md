@@ -1,13 +1,10 @@
 # REST API Test Suite: DemoShopping Platform
 
-[![Postman Collection](https://img.shields.io/badge/Postman-Collection%20v2.1-orange?logo=postman)](https://go.postman.co/collection/53615538-bf4c98cf-4cca-4759-9cbf-0bc605b75b62?source=collection_link)
-[![Test Runner](https://img.shields.io/badge/CLI-Newman%20Compatible-blue)](https://www.npmjs.com/package/newman)
-
 ### 🎯 Overview
 
 Automated and exploratory REST API test suite developed in Postman for the **DemoShopping** platform. The suite implements full lifecycle validation across product catalogs, shopping carts, checkout payments, and order workflows based on Swagger/OpenAPI specifications.
 
-It covers end-to-end positive paths, client/server error responses (`400`, `401`, `403`, `404`, `500`), dynamic variable chaining across requests, and strict SLA response-time monitoring (< 500 ms).
+It covers end-to-end positive paths, client/server error responses (`400`, `401`, `403`, `404`, `500`), dynamic variable chaining across requests, and SLA response-time monitoring (< 500 ms).
 
 ---
 
@@ -28,10 +25,10 @@ It covers end-to-end positive paths, client/server error responses (`400`, `401`
 * `POST /login` — Authenticates user credentials, asserts `Content-Type: application/json`, and dynamically extracts the session token into `{{key}}`.
 * `GET /products/` — Validates array responses and essential schema fields (`product_id`, `name`, `price`).
 
-#### 2. `Products` (Catalog & Lifecycle Management)
+#### 2. Products (Catalog & Lifecycle Management)
 * **Add product (`POST /add-product`):**
   * `200 OK` — Dynamic regex extraction of newly generated ID into `{{product_id}}`.
-  * `400 Bad Request` — Schema validation with invalid body types (e.g., numeric name).
+  * `400 Bad Request` — Schema validation with invalid body types.
 * **Get Product by ID (`GET /products/id/{{product_id}}`):**
   * `200 OK` — Verifies product schema properties.
   * `404 Not Found` — Handling nonexistent items.
@@ -47,7 +44,7 @@ It covers end-to-end positive paths, client/server error responses (`400`, `401`
 * **Delete product (`DELETE /products/id/{{product_id}}`):**
   * `200 OK`, `403 Forbidden` (restricted resource), `404 Not Found`.
 
-#### 3. `Cart` (Shopping Cart State Engine)
+#### 3. Cart (Shopping Cart State Engine)
 * **Add to cart (`POST /cart`):**
   * `200 OK` — Authorized item additions (`Bearer {{key}}`).
   * `400 Bad Request` — Non-numeric or invalid payload parameters.
@@ -61,7 +58,7 @@ It covers end-to-end positive paths, client/server error responses (`400`, `401`
 * **Clear cart (`DELETE /cart/{{cart_item_id}}`):**
   * `200 OK` (deletion confirmation), `400 Bad Request`, `401 Unauthorized`, `404 Not Found`.
 
-#### 4. `Payment` (Card Processing & Balance)
+#### 4. Payment (Card Processing & Balance)
 * `POST /pay`:
   * `200 OK` — Successful transaction flow and confirmation string parsing.
   * `400 Bad Request` — Insufficient funds validation (`"Недостаточно средств на карте."`).
@@ -69,7 +66,7 @@ It covers end-to-end positive paths, client/server error responses (`400`, `401`
 * `GET /updateBalances`:
   * `200 OK` — Resets test credit card balances to prevent execution blocking.
 
-#### 5. `Create Orders` (Order Lifecycle & History)
+#### 5. Create Orders (Order Lifecycle & History)
 * `GET /user-orders` — Retrieves orders array and extracts current item metadata.
 * `POST /orders` — Generates a new order and captures dynamic `{{orderId}}`.
 * `PATCH /orders/{orderId}/products/{productId}` — Updates ordered product quantity.
